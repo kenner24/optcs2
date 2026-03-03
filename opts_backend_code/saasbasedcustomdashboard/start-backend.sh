@@ -10,6 +10,10 @@ echo "Listening on port: $NGINX_PORT"
 # Substitute the port into nginx config
 envsubst '${NGINX_PORT}' < /etc/nginx/nginx-backend.conf.template > /etc/nginx/sites-available/default
 
+# Create .env file from environment variables (Laravel requires this file)
+echo "Creating .env file from environment variables..."
+env | grep -E '^(APP_|DB_|MAIL_|CACHE_|SESSION_|QUEUE_|LOG_|FRONT_END|SANCTUM_|BROADCAST_|FILESYSTEM_|REDIS_|AWS_|PUSHER_|MIX_|VITE_|QUICKBOOKS_|SALESFORCE_|GOOGLE_)' > /var/www/html/.env 2>/dev/null || true
+
 # Generate app key if not set
 if [ -z "$APP_KEY" ]; then
     echo "Generating application key..."
