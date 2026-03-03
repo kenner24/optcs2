@@ -1,0 +1,111 @@
+version: '3.8'
+
+services:
+  # ──────────────────────────────────────────────
+  # MySQL Database
+  # ──────────────────────────────────────────────
+  db:
+    image: mysql:8.0
+    container_name: optcs-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-optcs_root_2024}
+      MYSQL_DATABASE: ${DB_DATABASE:-optcs}
+      MYSQL_USER: ${DB_USERNAME:-optcs_user}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-optcs_password_2024}
+    ports:
+      - "3306:3306"
+    volumes:
+      - optcs_db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ──────────────────────────────────────────────
+  # Laravel Backend API
+  # ──────────────────────────────────────────────
+  backend:
+    build:
+      context: ..
+      dockerfile: deployment/Dockerfile.backend
+    container_name: optcs-backend
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      APP_NAME: OPTCS
+      APP_ENV: production
+      APP_DEBUG: "false"
+      APP_URL: ${APP_URL:-http://localhost:8000}
+      FRONT_END_APP_URL: ${FRONTEND_URL:-http://localhost}
+
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: ${DB_DATABASE:-optcs}
+      DB_USERNAME: ${DB_USERNAME:-optcs_user}
+      DB_PASSWORD: ${DB_PASSWORD:-optcs_password_2024}
+
+      CACHE_DRIVER: file
+      SESSION_DRIVER: file
+      QUEUE_CONNECTION: sync
+
+      MAIL_MAILER: ${MAIL_MAILER:-smtp}
+      MAIL_HOST: ${MAIL_HOST:-}
+      MAIL_PORT: ${MAIL_PORT:-587}
+      MAIL_USERNAME: ${MAIL_USERNAME:-}
+      MAIL_PASSWORD: ${MAIL_PASSWORD:-}
+      MAIL_ENCRYPTION: ${MAIL_ENCRYPTION:-tls}
+      MAIL_FROM_ADDRESS: ${MAIL_FROM_ADDRESS:-noreply@optcs.com}
+      MAIL_FROM_NAME: OPTCS
+
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+      GOOGLE_REDIRECT_URL: ${GOOGLE_REDIRECT_URL:-}
+
+      QUICK_BOOKS_CLIENT_ID: ${QUICK_BOOKS_CLIENT_ID:-}
+      QUICK_BOOKS_CLIENT_SECRET: ${QUICK_BOOKS_CLIENT_SECRET:-}
+      QUICK_BOOKS_AUTH_REQUEST_URL: https://appcenter.intuit.com/connect/oauth2
+      QUICK_BOOKS_TOKEN_ENDPOINT_URL: https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer
+      QUICK_BOOKS_OAUTH_SCOPE: "com.intuit.quickbooks.accounting openid profile email phone address"
+      QUICK_BOOKS_OAUTH_REDIRECT_URI: ${FRONTEND_URL:-http://localhost}/connectors
+      QUICK_BOOKS_BASE_URL: ${QUICK_BOOKS_BASE_URL:-production}
+      QUICK_BOOKS_API_BASE_URL: ${QUICK_BOOKS_API_BASE_URL:-https://quickbooks.api.intuit.com}
+      QUICK_BOOKS_MINOR_VERSION: 65
+
+      SALESFORCE_CLIENT_ID: ${SALESFORCE_CLIENT_ID:-}
+      SALESFORCE_CLIENT_SECRET: ${SALESFORCE_CLIENT_SECRET:-}
+      SALESFORCE_API_BASE_URL: ${SALESFORCE_API_BASE_URL:-}
+      SALESFORCE_LOGIN_API_BASE_URL: https://login.salesforce.com/
+      SALESFORCE_REDIRECT_URI: ${FRONTEND_URL:-http://localhost}/connectors
+      SALESFORCE_API_VERSION: v57.0
+    ports:
+      - "8000:8000"
+    volumes:
+      - optcs_storage:/var/www/html/storage
+
+  # ──────────────────────────────────────────────
+  # React Frontend
+  # ──────────────────────────────────────────────
+  frontend:
+    build:
+      context: ..
+      dockerfile: deployment/Dockerfile.frontend
+      args:
+        VITE_API_URL: ${APP_URL:-http://localhost:8000}/api/
+        VITE_BASE_URL: ${FRONTEND_URL:-http://localhost}/
+        VITE_IMG_URL: ${APP_URL:-http://localhost:8000}/images/
+        VITE_GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+    container_name: optcs-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+
+volumes:
+  optcs_db_data:
+  optcs_storage:
