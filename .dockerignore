@@ -1,0 +1,9 @@
+opts_backend_code/
+deployment/
+node_modules/
+dist/
+.git/
+.DS_Store
+*.md
+.claude/
+.husky/

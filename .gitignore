@@ -1,0 +1,25 @@
+# Frontend
+node_modules/
+dist/
+.env
+.env.local
+.env.production
+
+# Backend (Laravel)
+opts_backend_code/saasbasedcustomdashboard/vendor/
+opts_backend_code/saasbasedcustomdashboard/.env
+opts_backend_code/saasbasedcustomdashboard/storage/logs/*.log
+opts_backend_code/saasbasedcustomdashboard/storage/framework/cache/data/*
+opts_backend_code/saasbasedcustomdashboard/storage/framework/sessions/*
+opts_backend_code/saasbasedcustomdashboard/storage/framework/views/*.php
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+
+# Deployment secrets
+deployment/.env.production

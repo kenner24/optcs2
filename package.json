@@ -1,0 +1,60 @@
+{
+  "name": "optcs",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --mode production",
+    "preview": "vite preview",
+    "lint": "eslint \"src/**/*.{js,jsx}\"",
+    "lint:fix": "eslint \"src/**/*.{js,jsx}\" --fix",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@greatsumini/react-facebook-login": "^3.3.2",
+    "@react-oauth/google": "^0.9.1",
+    "@reduxjs/toolkit": "^1.9.3",
+    "@tanstack/react-table": "^8.9.3",
+    "bootstrap": "^5.2.3",
+    "chart.js": "^4.3.0",
+    "jwt-decode": "^3.1.2",
+    "moment": "^2.29.4",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.7.2",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18.2.0",
+    "react-facebook-auth": "^1.4.0",
+    "react-helmet": "^6.1.0",
+    "react-html-parser": "^2.0.2",
+    "react-microsoft-login": "^2.0.1",
+    "react-multilevel-dropdown": "^4.0.0",
+    "react-otp-input": "^3.0.0",
+    "react-paginate": "^8.2.0",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.9.0",
+    "react-select": "^5.7.4",
+    "react-toastify": "^9.1.2",
+    "redux": "^4.2.1",
+    "swiper": "^9.3.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react-swc": "^3.0.0",
+    "eslint": "^8.36.0",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
+    "prettier": "^2.8.4",
+    "sass": "^1.60.0",
+    "vite": "^4.1.0"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  }
+}

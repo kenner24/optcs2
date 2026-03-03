@@ -1,0 +1,1156 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Saas API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "description": "Register the company on the platform",
+                "operationId": "d6f5d00c40f9de2e9272088aebe648c8",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string"
+                                    },
+                                    "company_name": {
+                                        "type": "string"
+                                    },
+                                    "work_email": {
+                                        "type": "string"
+                                    },
+                                    "total_employees": {
+                                        "type": "number"
+                                    },
+                                    "domain_sector": {
+                                        "type": "string"
+                                    },
+                                    "username": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Company registered",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "description": "Login User",
+                "operationId": "9d95940f482b12c15d9085179f686fd3",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "description": "Email address of the new user.",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "password of the new user.",
+                                        "type": "string"
+                                    },
+                                    "device_name": {
+                                        "description": "Enter device name eg. iphone, android, firefox, chrome",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Login User",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user-logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "description": "Logout API",
+                "operationId": "1cefd491d951d33108027c12f6a2dbd2",
+                "responses": {
+                    "200": {
+                        "description": "Logout API",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/social-login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "description": "Google Login User",
+                "operationId": "1bbf0397c3a0ef3917c30cb42e823673",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "provider_name": {
+                                        "description": "Enter provider name",
+                                        "type": "string"
+                                    },
+                                    "provider_id": {
+                                        "description": "Enter provider id",
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "description": "Enter email",
+                                        "type": "string"
+                                    },
+                                    "device_name": {
+                                        "description": "Enter device name eg. iphone, android, firefox, chrome",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Google Login User",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/register-social-account": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "description": "Google Register User",
+                "operationId": "e0b96be4ed2feaa5b2b2b822338ab037",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "provider_name": {
+                                        "description": "Enter provider name",
+                                        "type": "string"
+                                    },
+                                    "provider_id": {
+                                        "description": "Enter provider id",
+                                        "type": "string"
+                                    },
+                                    "first_name": {
+                                        "description": "Enter First Name",
+                                        "type": "string"
+                                    },
+                                    "last_name": {
+                                        "description": "Enter Last Name",
+                                        "type": "string"
+                                    },
+                                    "image": {
+                                        "description": "image url",
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "description": "Enter email address",
+                                        "type": "string"
+                                    },
+                                    "device_name": {
+                                        "description": "Enter device name eg. iphone, android, firefox, chrome",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Google Register User",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/connectors/authorization-endpoint": {
+            "get": {
+                "tags": [
+                    "Connectors"
+                ],
+                "description": "Get the authorization url for the oauth",
+                "operationId": "dd474e02fe6cbc9ac6915f131a531f00",
+                "parameters": [
+                    {
+                        "name": "connector_type",
+                        "in": "query",
+                        "description": "Allowed values are salesforce, quickbooks, googlesheet",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/connectors/add": {
+            "post": {
+                "tags": [
+                    "Connectors"
+                ],
+                "description": "Add the connector to the application",
+                "operationId": "22f449d7ad218ac911e2fa2c93bae53d",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "connector_type": {
+                                        "description": "Allowed values salesforce, quickbooks, googlesheet",
+                                        "type": "string"
+                                    },
+                                    "authorization_code": {
+                                        "description": "",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/connectors/add-preference": {
+            "post": {
+                "tags": [
+                    "Connectors"
+                ],
+                "description": "Save the connector related preference in database",
+                "operationId": "de34ff00d0d50cf63f058f17fe90c026",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "connector_type": {
+                                        "description": "Allowed values 'salesforce', 'quickbooks', 'googlesheet'",
+                                        "type": "string"
+                                    },
+                                    "column_name": {
+                                        "description": "Allowed values 'budget_id', 'spreadsheet_id', 'sheet_id'",
+                                        "type": "string"
+                                    },
+                                    "column_value": {
+                                        "description": "",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/connectors/fetch-preferences": {
+            "get": {
+                "tags": [
+                    "Connectors"
+                ],
+                "description": "Fetch all the saved preferences of the user",
+                "operationId": "dd22a93ddc2e8226e479c95e82b17650",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/mail-verification-notification": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "description": "Resend the email verification mail to the user",
+                "operationId": "f2ba1652fc3a70f4f5f3ee8bfac46572",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Company registered",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/forgot-password": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "description": "Send forgot password email to the user",
+                "operationId": "9fec96459cbb389e81d38e0a8d382c90",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "description": "Email address of the new user.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Login User",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/google-spreadsheet-list": {
+            "get": {
+                "tags": [
+                    "GoogleSheets"
+                ],
+                "description": "Fetch the list of all sheets present on user google account",
+                "operationId": "bcf36e4f9e35e58663fe71ccdf290b33",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/fetch-spreadsheet-sheets-list/{id}": {
+            "get": {
+                "tags": [
+                    "GoogleSheets"
+                ],
+                "description": "Fetch the sheets present within the spreadsheet",
+                "operationId": "c6fe46486948f6efb879046245381b6f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Spread sheet Id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/fetch-sheet-headers/{id}": {
+            "get": {
+                "tags": [
+                    "GoogleSheets"
+                ],
+                "description": "",
+                "operationId": "92f4621bdd8f8b610237cf87f02d4464",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Spreadsheet Id",
+                        "required": true
+                    },
+                    {
+                        "name": "sheet_name",
+                        "in": "query",
+                        "description": "Enter the selected sheet name",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/overview": {
+            "get": {
+                "tags": [
+                    "Overview"
+                ],
+                "description": "",
+                "operationId": "b9475342894a6cc429bc0aa8a38d2a15",
+                "parameters": [
+                    {
+                        "name": "year",
+                        "in": "query",
+                        "description": "",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/compute/quick-books-data": {
+            "get": {
+                "tags": [
+                    "Computation"
+                ],
+                "description": "Compute the quick books related data for all the user",
+                "operationId": "4601a5812844d4c14cec2f0cd1e6ae59",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/quickbook-budget-list": {
+            "get": {
+                "tags": [
+                    "QuickBook"
+                ],
+                "description": "Fetch the list of all budget of the user present on quickbooks",
+                "operationId": "37ecfce98605962033b76e30bc94565c",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/fetch-report-goals": {
+            "get": {
+                "tags": [
+                    "Reports"
+                ],
+                "description": "Fetch the goals/targets for the various reports",
+                "operationId": "9bc73632b8cfb26ee37cb47ebae20170",
+                "parameters": [
+                    {
+                        "name": "report_name",
+                        "in": "query",
+                        "description": "",
+                        "required": true
+                    },
+                    {
+                        "name": "year",
+                        "in": "query",
+                        "description": "",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/save-report-goals": {
+            "post": {
+                "tags": [
+                    "Reports"
+                ],
+                "description": "Save the report goals",
+                "operationId": "79400ed292f18a0bf882cdc761abfdaa",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "report_name": {
+                                        "type": "string"
+                                    },
+                                    "year": {
+                                        "type": "number"
+                                    },
+                                    "goals": {
+                                        "type": "object",
+                                        "example": "{Jan:0,Feb:0,Mar:0,Apr:0,May:0,Jun:0,Jul:0,Aug:0,Sep:0,Oct:0,Nov:0,Dec:0}"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/reports": {
+            "get": {
+                "tags": [
+                    "Reports"
+                ],
+                "description": "Get the data for the charts in reports of the company dashboard",
+                "operationId": "57bf6a02e24e568e7e9c8250d7af0c8b",
+                "parameters": [
+                    {
+                        "name": "report_type",
+                        "in": "query",
+                        "description": "Allowed values are 'leads-generated', 'opportunities', 'current-liabilities', 'cash-on-hand', 'monthly-expenses', 'profitability-percentage' ",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/reset-password": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "description": "Reset password of the user",
+                "operationId": "ef41c1a9de4e2eec5a437d6ad684e006",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "password": {
+                                        "description": "",
+                                        "type": "string"
+                                    },
+                                    "password_confirmation": {
+                                        "description": "",
+                                        "type": "string"
+                                    },
+                                    "token": {
+                                        "description": "",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Login User",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/compute/leads-data": {
+            "get": {
+                "tags": [
+                    "Computation"
+                ],
+                "description": "Compute the leads data for all the users",
+                "operationId": "ba8635334c69c8a56d64c98ae2b0c0eb",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/compute/opportunities-data": {
+            "get": {
+                "tags": [
+                    "Computation"
+                ],
+                "description": "Compute the opportunities data for all the users",
+                "operationId": "ba2c11fdd2ddcec630f9329c405121fb",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/staff-list": {
+            "get": {
+                "tags": [
+                    "Staff"
+                ],
+                "description": "Get User Staff List",
+                "operationId": "363f3ea9aeec144a09fcd19fbfe7008f",
+                "parameters": [
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "",
+                        "required": true
+                    },
+                    {
+                        "name": "pageIndex",
+                        "in": "query",
+                        "description": "",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get User Staff List",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/change-staff-status": {
+            "post": {
+                "tags": [
+                    "Staff"
+                ],
+                "description": "Activate or deactivate the staff member account",
+                "operationId": "f51cc2c3ec41cf777f406aeb8d0b5938",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "Staff member id",
+                                        "type": "integer"
+                                    },
+                                    "activate": {
+                                        "description": "Account status",
+                                        "type": "boolean"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/staff-edit": {
+            "put": {
+                "tags": [
+                    "Staff"
+                ],
+                "description": "Edit staff member details",
+                "operationId": "6ac41736ffed4c00e3a32f327be11019",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "Staff member id",
+                                        "type": "integer"
+                                    },
+                                    "name": {
+                                        "description": "Staff member name",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/staff-delete": {
+            "delete": {
+                "tags": [
+                    "Staff"
+                ],
+                "description": "Delete the company staff member",
+                "operationId": "6e0d18b4ab29bb183d681deedeb28e60",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/staff-add": {
+            "post": {
+                "tags": [
+                    "Staff"
+                ],
+                "description": "User Staff Add API",
+                "operationId": "085190bcf5674af0343396c8f35e8e58",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "name of the staff.",
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "description": "password of the staff.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User Staff Add API",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/user-profile": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "description": "Get the user profile details",
+                "operationId": "4faa31fd39d1d9bdba03268e83538ebb",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/user-change-password": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "description": "Api to change the user password from the company settings page",
+                "operationId": "5e3db51863cf152a4c1fe9c2599f0c1f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "old_password": {
+                                        "description": "Old Password",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "Password",
+                                        "type": "string"
+                                    },
+                                    "password_confirmation": {
+                                        "description": "Confirm Password",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/user-profile-update": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "description": "User Profile Update API",
+                "operationId": "4a944c7486b79869f6d0ce50c5331a40",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "name",
+                                        "type": "string"
+                                    },
+                                    "username": {
+                                        "description": "username",
+                                        "type": "string"
+                                    },
+                                    "company_name": {
+                                        "description": "Company Name",
+                                        "type": "string"
+                                    },
+                                    "work_email": {
+                                        "description": "Work Email",
+                                        "type": "string"
+                                    },
+                                    "total_employees": {
+                                        "description": "Total Employees",
+                                        "type": "string"
+                                    },
+                                    "domain_sector": {
+                                        "description": "Domain Sector",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User Profile Update API",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "name": "bearerAuth",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+.error {
+  color: red;
+  font-weight: normal !important;
+}
+
+.new-btn {
+  margin-left: 10px;
+}
+
+
+label:not(.form-check-label):not(.custom-file-label) {
+  font-weight: inherit !important;
+}
+
+.dataTables_filter {
+  margin-right: 15px !important;
+}
+
+.d-block {
+  text-decoration: none !important;
+}
+
+.company-report-section {
+  display: flex;
+  justify-content: center;
+}
+
+.company-report-charts {
+  min-height: 290px;
+}
+
+.company-report-chart-loader {
+  display: flex;
+  justify-content: center;
+}
+
+.required:after {
+  content: " *";
+  color: red;
+}
