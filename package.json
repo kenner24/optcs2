@@ -30,6 +30,7 @@
     "react-microsoft-login": "^2.0.1",
     "react-multilevel-dropdown": "^4.0.0",
     "react-otp-input": "^3.0.0",
+    "qs": "^6.11.2",
     "react-paginate": "^8.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.9.0",
